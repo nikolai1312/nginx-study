@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/bold/style.css" />
+
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/duotone/style.css" />
+    <link rel="icon" type="image/x-icon" href="/NGINX-SITE-TESTE/assets/clipboard-fill.svg">
+    <title>To Do</title>
+</head>
+
+<body>
+
+    <header class="planoFundo">
+        <img src="assets/ToDo.svg" alt="Bloco de notas" class="imagem-titulo">
+        <h1 class="tituloPadrao"> To<span class="titulo-do">Do</span> </h1>
+    </header>
+    <div class="board-container">
+        <main>
+            <form class="campoTarefa" for="taskInput">
+                <input id="taskInput" type="text" class="inserirTarefa" placeholder="Insira uma nova tarefa">
+
+                <button id="taskBtn" type="submit" class="botaoCriar" onclick="addTask(event)"> Criar <i
+                        class="ph-bold ph-plus-circle" alt="ícone de adicionar"></i></button>
+            </form>
+            <section class="contador_tasks">
+                <p class="texto_taskCriada"> Tarefas criadas <span class="contador_TaskCriada" id="task_criada"> 0
+                    </span>
+                </p>
+                <p class="texto_taskConcluida"> Tarefas concluídas <span class="contador_TaskFinalizada"
+                        id="task_concluida"> 0 </span></p>
+            </section>
+            <section id="board_vazio" class="board_vazio hidden">
+                <div>
+                    <i class="ph-bold ph-clipboard-text"></i>
+                    <p> <span class="texto_board_vazio"> Você ainda não tem tarefas cadastradas </span></p>
+                    <p> Crie tarefas e organize seus itens a fazer </p>
+                </div>
+            </section>
+            <ul id="taskLista" class="task_lista">
+
+            </ul>
+        </main>
+    </div>
+    <script src="tarefas.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,305 @@
+:root {
+    --branco: #fff;
+    --cinza-100: #d9d9d9;
+    --cinza-200: #808080;
+    --cinza-300: #333;
+    --cinza-400: #262626;
+    --cinza-500: #1a1a1a;
+    --preto: #0d0d0d;
+
+    --roxo-200: #6769e3;
+    --roxo-400: #5e60ce;
+    --roxo-600: #4d4ea6;
+
+    --azul-200: #4697c9;
+    --azul-300: #3f84b0;
+    --azul-400: #376794;
+
+    --vermelho: #E25858;
+}
+
+:focus {
+    outline: transparent;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 0;
+    font-family: 'Inter', arial, sans-serif;
+    text-decoration: none;
+    transition: all .2s ease-out;
+}
+
+body {
+    background-color: var(--cinza-400);
+    color: var(--branco);
+    -webkit-font-smoothing: antialiased;
+}
+
+body,
+input,
+button {
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+input,
+button {
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+input:hover,
+button:hover,
+i:hover {
+    cursor: pointer;
+}
+
+/* 
+textarea:focus,
+input:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+} */
+/* ------------------------- BOX CONTEUDO ------------------------- */
+.board-container {
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: 0 1rem 5rem 1rem;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 87.5%;
+    }
+}
+
+/* ------------------------- HEADER ------------------------- */
+
+header {
+    /* background-color: var(--preto); */
+    padding: calc(6.75rem - 2rem) 0;
+    display: flex;
+    justify-content: center;
+
+    background: var(--preto);
+    width: 100%;
+}
+
+.imagem-titulo {
+    height: 3.125rem;
+    margin-right: 0.625rem;
+    color: var(--branco);
+}
+
+h1 {
+    color: var(--azul-200);
+    font-weight: 900;
+    font-size: 2.5rem;
+    text-align: center;
+    height: 100%;
+}
+
+.titulo-do {
+    color: var(--roxo-400);
+}
+
+/* ------------------------- FORMULARIO ------------------------- */
+
+.campoTarefa {
+    display: flex;
+    gap: 1rem;
+
+    margin-top: -31px;
+}
+
+.campoTarefa input {
+    background-color: var(--cinza-300);
+    color: var(--cinza-200);
+
+    width: 100%;
+    height: 3.4rem;
+    border: 2px solid transparent;
+}
+
+.campoTarefa input:hover,
+.campoTarefa input:focus {
+    border: 2px solid var(--roxo-400);
+}
+
+.campoTarefa input:enabled {
+    color: var(--branco);
+}
+
+.campoTarefa button {
+    width: 6.625rem;
+    height: 3.25rem;
+
+    background: var(--azul-300);
+    color: var(--branco);
+    border: 1px solid transparent;
+
+    display: flex;
+    align-items: center;
+}
+
+.campoTarefa button:hover {
+    background: var(--azul-400);
+}
+
+.campoTarefa button i {
+    font-size: 22px;
+    margin-left: 0.5rem;
+}
+
+.campoTarefa button:disabled {
+    background: var(--preto);
+    color: var(--cinza-200);
+}
+
+/* ------------------------- CONTADOR ------------------------- */
+
+.contador_tasks {
+    max-width: 100%;
+    padding: 1.25rem;
+    margin: 48px auto;
+
+    border-top: 3px solid var(--cinza-500);
+    border-bottom: 3px solid var(--cinza-500);
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.texto_taskCriada {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--azul-200);
+
+}
+
+.contador_tasks span {
+    color: var(--branco);
+    padding: 5.5px 12px;
+    background-color: var(--cinza-300);
+    border-radius: 999px;
+    margin-left: 7px;
+    font-size: 0.9rem;
+}
+
+.texto_taskConcluida {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--roxo-400);
+}
+
+/* ------------------------- BOARD TASKS VAZIO ------------------------- */
+
+.board_vazio {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: var(--cinza-200);
+    font-size: 1.2rem;
+}
+
+.texto_board_vazio {
+    font-weight: 600;
+}
+
+.board_vazio i {
+    font-size: 3.75rem;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 1rem;
+}
+
+.board_vazio i:hover {
+    cursor: default;
+}
+
+/* ------------------------- BOARD TASKS ------------------------- */
+
+.task_lista {
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: var(--cinza-300);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.task+.task {
+    margin-top: 1rem;
+}
+
+.task div {
+    display: flex;
+    align-items: center;
+}
+
+.task div p {
+    margin: 0 16px;
+    color: var(--branco);
+}
+
+.botao_check {
+    color: var(--roxo-200);
+    font-size: 1.75rem;
+}
+
+.botao_check:hover {
+    color: var(--roxo-600);
+}
+
+.botao_excluir {
+    font-size: 1.5rem;
+    color: var(--cinza-200);
+}
+
+.task .botao_excluir:hover {
+    color: var(--vermelho);
+}
+
+/* ------------------------- TASKS CONCLUÍDAS ------------------------- */
+
+.botao_checked {
+    color: var(--azul-300);
+    font-size: 1.75rem;
+}
+
+.botao_checked:hover {
+    color: var(--roxo-200);
+}
+
+.concluida div .textoRiscado {
+    text-decoration: line-through;
+    color: var(--cinza-200);
+    background: var(--cinza-300);
+}
+
+/* ------------------------- TEXTO HIDDEN ------------------------- */
+
+.hidden {
+    display: none;
+}
