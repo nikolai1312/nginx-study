@@ -1,0 +1,36 @@
+name: 'Publish container image'
+
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  push_to_registry:
+    name: 'Push image to docker hub'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Check out repository'
+        uses: actions/checkout@v4
+
+      - name: 'Login to docker hub'
+        uses: docker/login-action@v3
+        with:
+          username: ${{secrets.DOCKERHUB_USERNAME}}
+          password: ${{secrets.DOCKERHUB_PASSWD}}
+
+      - name: 'Building docker image'
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: false
+          tags: |
+            nikolai1312/nginx-chainguard:${{ github.run_number }}
+            nikolai1312/nginx-chainguard:latest
+      
+      - name: 'Publishing image to docker repository'
+        run: |
+          docker push nikolai1312/nginx-chainguard:${{ github.run_number }}
+          docker push nikolai1312/nginx-chainguard:latest
+            
