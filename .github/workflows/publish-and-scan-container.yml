@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - 'master'
-      - 'feat/**'
 
 jobs:
   
@@ -32,10 +31,10 @@ jobs:
             nikolai1312/nginx-chainguard:${{ github.run_number }}
             nikolai1312/nginx-chainguard:latest
       
-      #- name: 'Publishing image to docker repository'
-      #  run: |
-      #    docker push nikolai1312/nginx-chainguard:${{ github.run_number }}
-      #    docker push nikolai1312/nginx-chainguard:latest
+      - name: 'Publishing image to docker repository'
+        run: |
+          docker push nikolai1312/nginx-chainguard:${{ github.run_number }}
+          docker push nikolai1312/nginx-chainguard:latest
 
   scan_docker_image:
     needs: push_to_registry
@@ -49,7 +48,6 @@ jobs:
           format: 'table'
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH,MEDIUM'
-          ignore-unfixed: false
-          exit-code: '0'
+          exit-code: '1'
           
             
