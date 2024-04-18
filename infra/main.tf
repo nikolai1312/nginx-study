@@ -12,6 +12,14 @@ provider "google" {
   region  = var.region
 }
 
+resource "google_cloud_run_v2_service_iam_member" "roles" {
+  project  = google_cloud_run_v2_service.container_run.project
+  location = google_cloud_run_v2_service.container_run.location
+  name     = google_cloud_run_v2_service.container_run.name
+  role     = var.roles
+  member   = "allUsers"
+}
+
 resource "google_cloud_run_v2_service" "container_run" {
   name     = var.container_service_name
   location = var.region

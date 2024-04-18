@@ -18,3 +18,8 @@ variable "container_image" {
   default     = ""
 }
 
+variable "roles" {
+  description = "Role para associar ao recurso do cloud run"
+  default     = "roles/run.invoker"
+}
+
