@@ -5,11 +5,32 @@ terraform {
       version = ">= 5.23.0"
     }
   }
+
+  backend "gcs" {
+    bucket = "terraform-ghactions-1105965"
+    prefix = "terraform"
+  }
 }
 
 provider "google" {
   project = var.project_id
   region  = var.region
+}
+
+resource "google_storage_bucket" "terraform" {
+  name          = "terraform-ghactions-1105965"
+  location      = var.region
+  force_destroy = false
+
+  project = var.project_id
+
+  storage_class = "STANDARD"
+
+  versioning {
+    enabled = true
+  }
+
+  public_access_prevention = "enforced"
 }
 
 resource "google_cloud_run_v2_service_iam_member" "roles" {
@@ -42,7 +63,7 @@ resource "google_cloud_run_v2_service" "container_run" {
       }
     }
 
-    max_instance_request_concurrency = 5
+    max_instance_request_concurrency = 3
 
     scaling {
       min_instance_count = 0
